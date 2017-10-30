@@ -83,6 +83,16 @@ namespace SysForm.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap 电脑申请 {
+            get {
+                object obj = ResourceManager.GetObject("电脑申请", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 还原 {
             get {
                 object obj = ResourceManager.GetObject("还原", resourceCulture);

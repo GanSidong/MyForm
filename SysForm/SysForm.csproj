@@ -44,16 +44,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="login_frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="login_frm.Designer.cs">
+      <DependentUpon>login_frm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MyForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MyForm.Designer.cs">
       <DependentUpon>MyForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PopMsgForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopMsgForm.designer.cs">
+      <DependentUpon>PopMsgForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TCPConnection.cs" />
+    <Compile Include="Win32API.cs" />
+    <EmbeddedResource Include="login_frm.resx">
+      <DependentUpon>login_frm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopMsgForm.resx">
+      <DependentUpon>PopMsgForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -86,6 +106,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\还原.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\电脑申请.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

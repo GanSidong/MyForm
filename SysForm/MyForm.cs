@@ -4,8 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,14 +16,56 @@ namespace SysForm
 {
     public partial class MyForm : Form
     {
+        /// <summary>
+        /// 服务器套接字的字符串形式，从登录窗体得到
+        /// </summary>
+        private string _svrskt = null;
+        /// <summary>
+        /// 用于接受和发送的网络流，从登录窗体得到
+        /// </summary>
+        private NetworkStream _nws = null;
+        /// <summary>
+        /// 数据缓冲区大小
+        /// </summary>
+        private int _maxPacket = 2048;//2K的缓冲区
+        /// <summary>
+        /// 用于接受消息的线程
+        /// </summary>
+        private Thread _receiveThread = null;
+
         public MyForm()
         {
             InitializeComponent();
+
         }
 
         private void cloBtn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult ret;
+            ret = MessageBox.Show("是否最小化程序到托盘？",
+                                  "退出",
+                                  MessageBoxButtons.OKCancel,
+                                  MessageBoxIcon.Question,
+                                  MessageBoxDefaultButton.Button2);
+
+            if (ret != DialogResult.OK)
+            {
+                //向服务器发送离线请求
+                _nws.Write(new byte[] { 0, 1 }, 0, 2);
+                //结束接受消息的线程
+                if (_receiveThread != null)
+                {
+                    _receiveThread.Abort();
+                }
+                _nws.Close();
+                this.Close();
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Minimized;    //使关闭时窗口向右下角缩小的效果
+                this.notifyIcon1.Visible = true;
+                this.Hide();
+            }
         }
 
         private void resBtn_Click(object sender, EventArgs e)
@@ -68,29 +113,130 @@ namespace SysForm
                 Win32API.AnimateWindow(this.Handle, 1000, Win32API.AW_BLEND);
             }
         }
-
-        class Win32API
+       
+        private void MyForm_Load(object sender, EventArgs e)
         {
+            login();
+            _receiveThread = new Thread(new ThreadStart(ReceiveMsg));
+            _receiveThread.Start();
+        }
 
-            public const Int32 AW_HOR_POSITIVE = 0x00000001; // 从左到右打开窗口  
-            public const Int32 AW_HOR_NEGATIVE = 0x00000002; // 从右到左打开窗口  
-            public const Int32 AW_VER_POSITIVE = 0x00000004; // 从上到下打开窗口  
-            public const Int32 AW_VER_NEGATIVE = 0x00000008; // 从下到上打开窗口  
-            public const Int32 AW_CENTER = 0x00000010; //若使用了AW_HIDE标志，则使窗口向内重叠；若未使用AW_HIDE标志，则使窗口向外扩展。  
-            public const Int32 AW_HIDE = 0x00010000; //隐藏窗口，缺省则显示窗口。  
-            public const Int32 AW_ACTIVATE = 0x00020000; //激活窗口。在使用了AW_HIDE标志后不要使用这个标志。  
-            public const Int32 AW_SLIDE = 0x00040000; //使用滑动类型。缺省则为滚动动画类型。当使用AW_CENTER标志时，这个标志就被忽略。  
-            public const Int32 AW_BLEND = 0x00080000; //使用淡出效果。只有当hWnd为顶层窗口的时候才可以使用此标志。  
-           
-            [DllImport("user32.dll", CharSet = CharSet.Auto)]
-            public static extern bool AnimateWindow(
-              IntPtr hwnd, // handle to window  
-              int dwTime, // duration of animation  
-              int dwFlags // animation type  
-              );
+        /// <summary>
+        /// 接受消息的线程执行体
+        /// </summary>
+        private void ReceiveMsg()
+        {
+            if (_nws != null)
+            {
+                while (true)
+                {
+                    byte[] packet = new byte[_maxPacket];
+                    _nws.Read(packet, 0, packet.Length);
+                    string _cmd = DecodingBytes(packet);
+                    string displaytxt = Encoding.Unicode.GetString(packet);
+                    PopMsgForm pop = new PopMsgForm(_svrskt, displaytxt);
+                    pop.Show();
+                }
+            }
 
-            [DllImport("User32.dll")]
-            public static extern bool PtInRect(ref Rectangle r, Point p);
+        }
+
+        /// <summary>
+        /// 提取命令
+        /// </summary>
+        /// <param name="s">要解析的包含命令的byte数组，只提取前两个字节</param>
+        /// <returns>拼接成的命令</returns>
+        private string DecodingBytes(byte[] s)
+        {
+            return string.Concat(s[0].ToString(), s[1].ToString());
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+           //向服务器发出连接请求
+            TCPConnection conn = new TCPConnection(IPAddress.Parse("172.17.7.1"), 8886);
+            TcpClient _tcpc = conn.Connect();
+            if (_tcpc == null)
+            {
+                MessageBox.Show("无法连接到服务器，请重试！",
+                                "错误",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                NetworkStream netstream = _tcpc.GetStream();//提供用于访问网络的基本数据流
+                //向服务器发送用户名以确认身份
+                netstream.Write(Encoding.Unicode.GetBytes(textBox1.Text), 0, Encoding.Unicode.GetBytes(textBox1.Text).Length);
+                //得到登录结果
+                byte[] buffer = new byte[50];
+                netstream.Read(buffer, 0, buffer.Length);//该方法将数据读入 buffer 参数并返回成功读取的字节数。如果没有可以读取的数据，则 Read 方法返回 0。
+                string connResult = Encoding.Unicode.GetString(buffer).TrimEnd('\0');
+                if (connResult.Equals("cmd::Failed"))
+                {
+                    MessageBox.Show("您的用户名已经被使用，请尝试其他用户名!",
+                                    "提示",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    byte[] packet = new byte[_maxPacket];
+                    _nws.Read(packet, 0, packet.Length);
+                    string displaytxt = Encoding.Unicode.GetString(packet);
+                    PopMsgForm pop = new PopMsgForm(_svrskt, displaytxt);
+                    pop.Show();
+                }
+            }
+        }
+       
+        private void login()
+        {
+            //向服务器发出连接请求
+            TCPConnection conn = new TCPConnection(IPAddress.Parse("172.17.7.1"), 8886);
+            TcpClient _tcpc = conn.Connect();
+            if (_tcpc == null)
+            {
+                MessageBox.Show("无法连接到服务器，请重试！",
+                                "错误",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                NetworkStream netstream = _tcpc.GetStream();//提供用于访问网络的基本数据流
+                //向服务器发送用户名以确认身份
+                string name = Guid.NewGuid().ToString();
+                netstream.Write(Encoding.Unicode.GetBytes(name), 0, Encoding.Unicode.GetBytes(name).Length);
+                //得到登录结果
+                byte[] buffer = new byte[50];
+                netstream.Read(buffer, 0, buffer.Length);//该方法将数据读入 buffer 参数并返回成功读取的字节数。如果没有可以读取的数据，则 Read 方法返回 0。
+                string connResult = Encoding.Unicode.GetString(buffer).TrimEnd('\0');
+                if (connResult.Equals("cmd::Failed"))
+                {
+                    MessageBox.Show("您的用户名已经被使用，请尝试其他用户名!",
+                                    "提示",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    string svrskt = "172.17.7.1" + ":" + "8886";
+                    _nws = netstream;
+                    _svrskt = svrskt;
+                    PopMsgForm pop = new PopMsgForm(_svrskt, "登录成功");
+                    pop.Show();
+                }
+            }
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.Show();
+            WindowState = FormWindowState.Normal;
+            this.Focus();
         }
     }
 }
