@@ -12,7 +12,6 @@ namespace SysForm
 {
     public partial class PopMsgForm : Form
     {
-        private static volatile PopMsgForm instance;
         private static readonly object obj = new object();
         public PopMsgForm(string name,string msg)
         {

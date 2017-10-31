@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using DevExpress.XtraBars.Navigation;
+using DevExpress.XtraEditors;
+using System;
 using System.Drawing;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SysForm
@@ -36,9 +32,17 @@ namespace SysForm
         public MyForm()
         {
             InitializeComponent();
-
         }
 
+        private void MyForm_Load(object sender, EventArgs e)
+        {
+            //login();
+            initView();
+            _receiveThread = new Thread(new ThreadStart(ReceiveMsg));
+            _receiveThread.Start();
+        }
+
+        #region 关闭，最小化，最大化按钮事件
         private void cloBtn_Click(object sender, EventArgs e)
         {
             DialogResult ret;
@@ -50,14 +54,16 @@ namespace SysForm
 
             if (ret != DialogResult.OK)
             {
-                //向服务器发送离线请求
-                _nws.Write(new byte[] { 0, 1 }, 0, 2);
-                //结束接受消息的线程
+                if (_nws !=null)
+                {
+                    //向服务器发送离线请求
+                    _nws.Write(new byte[] { 0, 1 }, 0, 2);
+                    _nws.Close();
+                }
                 if (_receiveThread != null)
                 {
                     _receiveThread.Abort();
                 }
-                _nws.Close();
                 this.Close();
             }
             else
@@ -85,6 +91,9 @@ namespace SysForm
         {
             this.WindowState = FormWindowState.Minimized;
         }
+        #endregion
+
+        #region timer控件，监视窗口位置，贴边隐藏
         private void timer1_Tick(object sender, EventArgs e)
         {
             System.Drawing.Point pp = new Point(Cursor.Position.X, Cursor.Position.Y);//获取鼠标在屏幕的坐标点
@@ -113,13 +122,7 @@ namespace SysForm
                 Win32API.AnimateWindow(this.Handle, 1000, Win32API.AW_BLEND);
             }
         }
-       
-        private void MyForm_Load(object sender, EventArgs e)
-        {
-            login();
-            _receiveThread = new Thread(new ThreadStart(ReceiveMsg));
-            _receiveThread.Start();
-        }
+        #endregion
 
         /// <summary>
         /// 接受消息的线程执行体
@@ -138,7 +141,6 @@ namespace SysForm
                     pop.Show();
                 }
             }
-
         }
 
         /// <summary>
@@ -149,46 +151,6 @@ namespace SysForm
         private string DecodingBytes(byte[] s)
         {
             return string.Concat(s[0].ToString(), s[1].ToString());
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-           //向服务器发出连接请求
-            TCPConnection conn = new TCPConnection(IPAddress.Parse("172.17.7.1"), 8886);
-            TcpClient _tcpc = conn.Connect();
-            if (_tcpc == null)
-            {
-                MessageBox.Show("无法连接到服务器，请重试！",
-                                "错误",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Exclamation);
-            }
-            else
-            {
-                NetworkStream netstream = _tcpc.GetStream();//提供用于访问网络的基本数据流
-                //向服务器发送用户名以确认身份
-                netstream.Write(Encoding.Unicode.GetBytes(textBox1.Text), 0, Encoding.Unicode.GetBytes(textBox1.Text).Length);
-                //得到登录结果
-                byte[] buffer = new byte[50];
-                netstream.Read(buffer, 0, buffer.Length);//该方法将数据读入 buffer 参数并返回成功读取的字节数。如果没有可以读取的数据，则 Read 方法返回 0。
-                string connResult = Encoding.Unicode.GetString(buffer).TrimEnd('\0');
-                if (connResult.Equals("cmd::Failed"))
-                {
-                    MessageBox.Show("您的用户名已经被使用，请尝试其他用户名!",
-                                    "提示",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Information);
-                    return;
-                }
-                else
-                {
-                    byte[] packet = new byte[_maxPacket];
-                    _nws.Read(packet, 0, packet.Length);
-                    string displaytxt = Encoding.Unicode.GetString(packet);
-                    PopMsgForm pop = new PopMsgForm(_svrskt, displaytxt);
-                    pop.Show();
-                }
-            }
         }
        
         private void login()
@@ -223,20 +185,69 @@ namespace SysForm
                 }
                 else
                 {
-                    string svrskt = "172.17.7.1" + ":" + "8886";
-                    _nws = netstream;
-                    _svrskt = svrskt;
-                    PopMsgForm pop = new PopMsgForm(_svrskt, "登录成功");
+                    byte[] packet = new byte[_maxPacket];
+                    _nws.Read(packet, 0, packet.Length);
+                    string displaytxt = Encoding.Unicode.GetString(packet);
+                    PopMsgForm pop = new PopMsgForm(_svrskt, displaytxt);
                     pop.Show();
                 }
             }
         }
+
+
+        private void initView()
+        {
+            this.navigationPage5.PageVisible = false;
+            this.navigationPage6.PageVisible = false;
+            this.navigationPage7.PageVisible = false;
+            this.navigationPage8.PageVisible = false;
+            this.navigationPage9.PageVisible = false;
+
+
+            string[] A2 = { "任务属性", "输入数据", "输出数据", "标准规范", "故障案例", "科技文献", "技术文件", "工具模块", "工作笔记" };
+
+            AccordionControlElement acEle2;
+            AccordionControlElement acEle1 = accordionControl1.Elements[0];
+
+            foreach (string A2Ele in A2)
+            {
+                acEle2 = acEle1.Elements.Add();
+                acEle2.Text = A2Ele;
+            }
+        }
+        
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             this.Show();
             WindowState = FormWindowState.Normal;
             this.Focus();
+        }
+
+        private void simpleBtn_Click(object sender, EventArgs e)
+        {
+            string btnTag = ((SimpleButton)sender).Tag.ToString();
+            if (btnTag == "CATIA")
+            {
+                this.navigationPage7.PageVisible = !this.navigationPage7.PageVisible;
+            }
+            else if (btnTag == "AMESim")
+            {
+                this.navigationPage5.PageVisible = !this.navigationPage5.PageVisible;
+            }
+            else if (btnTag == "Ansys")
+            {
+                this.navigationPage6.PageVisible = !this.navigationPage6.PageVisible;
+            }
+            else if (btnTag == "Flowmaster")
+            {
+                this.navigationPage8.PageVisible = !this.navigationPage8.PageVisible;
+            }
+            else if (btnTag == "Patran")
+            {
+                this.navigationPage9.PageVisible = !this.navigationPage9.PageVisible;
+            }
+            
         }
     }
 }

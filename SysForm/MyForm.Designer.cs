@@ -52,23 +52,45 @@ namespace SysForm
             this.resBtn = new System.Windows.Forms.Button();
             this.cloBtn = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.navigationPane1 = new DevExpress.XtraBars.Navigation.NavigationPane();
+            this.navigationPage1 = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
+            this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.navigationPage2 = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.navigationPage3 = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.navigationPage4 = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.navigationPage5 = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.navigationPage6 = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.navigationPage7 = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.navigationPage8 = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.navigationPage9 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.navigationPane1)).BeginInit();
+            this.navigationPane1.SuspendLayout();
+            this.navigationPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
+            this.navigationPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(230)))), ((int)(((byte)(200)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(51)))), ((int)(((byte)(81)))));
             this.panel1.Controls.Add(this.minBtn);
             this.panel1.Controls.Add(this.resBtn);
             this.panel1.Controls.Add(this.cloBtn);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(301, 30);
+            this.panel1.Size = new System.Drawing.Size(301, 39);
             this.panel1.TabIndex = 0;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gPanelTitleBack_MouseDown);
             // 
@@ -79,7 +101,7 @@ namespace SysForm
             this.minBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.minBtn.FlatAppearance.BorderSize = 0;
             this.minBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.minBtn.Location = new System.Drawing.Point(207, 3);
+            this.minBtn.Location = new System.Drawing.Point(207, 8);
             this.minBtn.Name = "minBtn";
             this.minBtn.Size = new System.Drawing.Size(23, 23);
             this.minBtn.TabIndex = 2;
@@ -94,7 +116,7 @@ namespace SysForm
             this.resBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.resBtn.FlatAppearance.BorderSize = 0;
             this.resBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.resBtn.Location = new System.Drawing.Point(236, 4);
+            this.resBtn.Location = new System.Drawing.Point(236, 8);
             this.resBtn.Name = "resBtn";
             this.resBtn.Size = new System.Drawing.Size(23, 23);
             this.resBtn.TabIndex = 1;
@@ -109,7 +131,7 @@ namespace SysForm
             this.cloBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.cloBtn.FlatAppearance.BorderSize = 0;
             this.cloBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cloBtn.Location = new System.Drawing.Point(265, 4);
+            this.cloBtn.Location = new System.Drawing.Point(265, 8);
             this.cloBtn.Name = "cloBtn";
             this.cloBtn.Size = new System.Drawing.Size(23, 23);
             this.cloBtn.TabIndex = 0;
@@ -122,25 +144,6 @@ namespace SysForm
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(95, 118);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 21);
-            this.textBox1.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.AutoSize = true;
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(230)))), ((int)(((byte)(200)))));
-            this.button1.Location = new System.Drawing.Point(95, 194);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 24);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "登录";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // notifyIcon1
             // 
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
@@ -148,22 +151,253 @@ namespace SysForm
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.navigationPane1);
+            this.panel2.Location = new System.Drawing.Point(0, 37);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(301, 566);
+            this.panel2.TabIndex = 3;
+            // 
+            // navigationPane1
+            // 
+            this.navigationPane1.BackgroundImage = global::SysForm.Properties.Resources.CATIA;
+            this.navigationPane1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.navigationPane1.Controls.Add(this.navigationPage1);
+            this.navigationPane1.Controls.Add(this.navigationPage2);
+            this.navigationPane1.Controls.Add(this.navigationPage3);
+            this.navigationPane1.Controls.Add(this.navigationPage4);
+            this.navigationPane1.Controls.Add(this.navigationPage5);
+            this.navigationPane1.Controls.Add(this.navigationPage6);
+            this.navigationPane1.Controls.Add(this.navigationPage7);
+            this.navigationPane1.Controls.Add(this.navigationPage8);
+            this.navigationPane1.Controls.Add(this.navigationPage9);
+            this.navigationPane1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.navigationPane1.Location = new System.Drawing.Point(0, 0);
+            this.navigationPane1.Name = "navigationPane1";
+            this.navigationPane1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
+            this.navigationPage1,
+            this.navigationPage2,
+            this.navigationPage3,
+            this.navigationPage4,
+            this.navigationPage5,
+            this.navigationPage6,
+            this.navigationPage7,
+            this.navigationPage8,
+            this.navigationPage9});
+            this.navigationPane1.RegularSize = new System.Drawing.Size(301, 566);
+            this.navigationPane1.SelectedPage = this.navigationPage1;
+            this.navigationPane1.Size = new System.Drawing.Size(301, 566);
+            this.navigationPane1.TabIndex = 9;
+            this.navigationPane1.Text = "navigationPane1";
+            // 
+            // navigationPage1
+            // 
+            this.navigationPage1.Caption = "我的任务";
+            this.navigationPage1.Controls.Add(this.accordionControl1);
+            this.navigationPage1.Image = ((System.Drawing.Image)(resources.GetObject("navigationPage1.Image")));
+            this.navigationPage1.Name = "navigationPage1";
+            this.navigationPage1.Properties.ShowCollapseButton = DevExpress.Utils.DefaultBoolean.False;
+            this.navigationPage1.Properties.ShowExpandButton = DevExpress.Utils.DefaultBoolean.False;
+            this.navigationPage1.Properties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.Image;
+            this.navigationPage1.Size = new System.Drawing.Size(219, 519);
+            // 
+            // accordionControl1
+            // 
+            this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
+            this.accordionControlElement1});
+            this.accordionControl1.Location = new System.Drawing.Point(0, 0);
+            this.accordionControl1.Name = "accordionControl1";
+            this.accordionControl1.Size = new System.Drawing.Size(219, 519);
+            this.accordionControl1.TabIndex = 0;
+            this.accordionControl1.Text = "accordionControl1";
+            // 
+            // accordionControlElement1
+            // 
+            this.accordionControlElement1.HeaderTemplate.AddRange(new DevExpress.XtraBars.Navigation.HeaderElementInfo[] {
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Text),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Image),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.HeaderControl),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.ContextButtons)});
+            this.accordionControlElement1.Name = "accordionControlElement1";
+            this.accordionControlElement1.Text = "初步结构设计";
+            // 
+            // navigationPage2
+            // 
+            this.navigationPage2.Caption = "我的消息";
+            this.navigationPage2.Image = ((System.Drawing.Image)(resources.GetObject("navigationPage2.Image")));
+            this.navigationPage2.Name = "navigationPage2";
+            this.navigationPage2.Properties.ShowCollapseButton = DevExpress.Utils.DefaultBoolean.False;
+            this.navigationPage2.Properties.ShowExpandButton = DevExpress.Utils.DefaultBoolean.False;
+            this.navigationPage2.Size = new System.Drawing.Size(219, 506);
+            // 
+            // navigationPage3
+            // 
+            this.navigationPage3.Caption = "专业模型库";
+            this.navigationPage3.Image = ((System.Drawing.Image)(resources.GetObject("navigationPage3.Image")));
+            this.navigationPage3.Name = "navigationPage3";
+            this.navigationPage3.Properties.ShowCollapseButton = DevExpress.Utils.DefaultBoolean.False;
+            this.navigationPage3.Properties.ShowExpandButton = DevExpress.Utils.DefaultBoolean.False;
+            this.navigationPage3.Size = new System.Drawing.Size(219, 506);
+            // 
+            // navigationPage4
+            // 
+            this.navigationPage4.Caption = "专业工具";
+            this.navigationPage4.Controls.Add(this.simpleButton5);
+            this.navigationPage4.Controls.Add(this.simpleButton4);
+            this.navigationPage4.Controls.Add(this.simpleButton3);
+            this.navigationPage4.Controls.Add(this.simpleButton2);
+            this.navigationPage4.Controls.Add(this.simpleButton1);
+            this.navigationPage4.Image = ((System.Drawing.Image)(resources.GetObject("navigationPage4.Image")));
+            this.navigationPage4.Name = "navigationPage4";
+            this.navigationPage4.Properties.ShowCollapseButton = DevExpress.Utils.DefaultBoolean.False;
+            this.navigationPage4.Properties.ShowExpandButton = DevExpress.Utils.DefaultBoolean.False;
+            this.navigationPage4.Size = new System.Drawing.Size(219, 506);
+            // 
+            // simpleButton5
+            // 
+            this.simpleButton5.BackgroundImage = global::SysForm.Properties.Resources.AMESim;
+            this.simpleButton5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.simpleButton5.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.simpleButton5.Image = global::SysForm.Properties.Resources.Flowmaster;
+            this.simpleButton5.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton5.Location = new System.Drawing.Point(137, 101);
+            this.simpleButton5.Name = "simpleButton5";
+            this.simpleButton5.Size = new System.Drawing.Size(49, 50);
+            this.simpleButton5.TabIndex = 4;
+            this.simpleButton5.Tag = "Flowmaster";
+            this.simpleButton5.Text = "Flowmaster";
+            this.simpleButton5.Click += new System.EventHandler(this.simpleBtn_Click);
+            // 
+            // simpleButton4
+            // 
+            this.simpleButton4.BackgroundImage = global::SysForm.Properties.Resources.AMESim;
+            this.simpleButton4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.simpleButton4.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.simpleButton4.Image = global::SysForm.Properties.Resources.patran;
+            this.simpleButton4.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton4.Location = new System.Drawing.Point(33, 198);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(49, 50);
+            this.simpleButton4.TabIndex = 3;
+            this.simpleButton4.Tag = "Patran";
+            this.simpleButton4.Text = "Patran";
+            this.simpleButton4.Click += new System.EventHandler(this.simpleBtn_Click);
+            // 
+            // simpleButton3
+            // 
+            this.simpleButton3.BackgroundImage = global::SysForm.Properties.Resources.AMESim;
+            this.simpleButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.simpleButton3.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.simpleButton3.Image = global::SysForm.Properties.Resources.CATIA;
+            this.simpleButton3.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton3.Location = new System.Drawing.Point(33, 101);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(49, 50);
+            this.simpleButton3.TabIndex = 2;
+            this.simpleButton3.Tag = "CATIA";
+            this.simpleButton3.Text = "CATIA";
+            this.simpleButton3.Click += new System.EventHandler(this.simpleBtn_Click);
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.BackgroundImage = global::SysForm.Properties.Resources.AMESim;
+            this.simpleButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.simpleButton2.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.simpleButton2.Image = global::SysForm.Properties.Resources.Ansys;
+            this.simpleButton2.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton2.Location = new System.Drawing.Point(134, 21);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(49, 50);
+            this.simpleButton2.TabIndex = 1;
+            this.simpleButton2.Tag = "Ansys";
+            this.simpleButton2.Text = "Ansys";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleBtn_Click);
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.BackgroundImage = global::SysForm.Properties.Resources.AMESim;
+            this.simpleButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.simpleButton1.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.simpleButton1.Image = global::SysForm.Properties.Resources.AMESim;
+            this.simpleButton1.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton1.Location = new System.Drawing.Point(33, 21);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(49, 50);
+            this.simpleButton1.TabIndex = 0;
+            this.simpleButton1.Tag = "AMESim";
+            this.simpleButton1.Text = "AMESim";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleBtn_Click);
+            // 
+            // navigationPage5
+            // 
+            this.navigationPage5.Caption = "AMESim";
+            this.navigationPage5.Image = global::SysForm.Properties.Resources.AMESim;
+            this.navigationPage5.Name = "navigationPage5";
+            this.navigationPage5.Properties.ShowCollapseButton = DevExpress.Utils.DefaultBoolean.False;
+            this.navigationPage5.Properties.ShowExpandButton = DevExpress.Utils.DefaultBoolean.False;
+            this.navigationPage5.Size = new System.Drawing.Size(219, 506);
+            // 
+            // navigationPage6
+            // 
+            this.navigationPage6.Caption = "Ansys";
+            this.navigationPage6.Image = global::SysForm.Properties.Resources.Ansys;
+            this.navigationPage6.Name = "navigationPage6";
+            this.navigationPage6.Properties.ShowCollapseButton = DevExpress.Utils.DefaultBoolean.False;
+            this.navigationPage6.Properties.ShowExpandButton = DevExpress.Utils.DefaultBoolean.False;
+            this.navigationPage6.Size = new System.Drawing.Size(219, 506);
+            // 
+            // navigationPage7
+            // 
+            this.navigationPage7.Caption = "CATIA";
+            this.navigationPage7.Image = global::SysForm.Properties.Resources.CATIA;
+            this.navigationPage7.Name = "navigationPage7";
+            this.navigationPage7.Properties.ShowCollapseButton = DevExpress.Utils.DefaultBoolean.False;
+            this.navigationPage7.Properties.ShowExpandButton = DevExpress.Utils.DefaultBoolean.False;
+            this.navigationPage7.Size = new System.Drawing.Size(219, 506);
+            // 
+            // navigationPage8
+            // 
+            this.navigationPage8.Caption = "Flowmaster";
+            this.navigationPage8.Image = global::SysForm.Properties.Resources.Flowmaster;
+            this.navigationPage8.Name = "navigationPage8";
+            this.navigationPage8.Properties.ShowCollapseButton = DevExpress.Utils.DefaultBoolean.False;
+            this.navigationPage8.Properties.ShowExpandButton = DevExpress.Utils.DefaultBoolean.False;
+            this.navigationPage8.Size = new System.Drawing.Size(219, 506);
+            // 
+            // navigationPage9
+            // 
+            this.navigationPage9.Caption = "Patran";
+            this.navigationPage9.Image = global::SysForm.Properties.Resources.patran;
+            this.navigationPage9.Name = "navigationPage9";
+            this.navigationPage9.Properties.ShowCollapseButton = DevExpress.Utils.DefaultBoolean.False;
+            this.navigationPage9.Properties.ShowExpandButton = DevExpress.Utils.DefaultBoolean.False;
+            this.navigationPage9.Size = new System.Drawing.Size(219, 506);
+            // 
             // MyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(197)))), ((int)(((byte)(177)))));
             this.ClientSize = new System.Drawing.Size(300, 600);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MyForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MyForm_Load);
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.navigationPane1)).EndInit();
+            this.navigationPane1.ResumeLayout(false);
+            this.navigationPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
+            this.navigationPage4.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -174,9 +408,25 @@ namespace SysForm
         private System.Windows.Forms.Button resBtn;
         private System.Windows.Forms.Button cloBtn;
         private Timer timer1;
-        private TextBox textBox1;
-        private Button button1;
         private NotifyIcon notifyIcon1;
+        private Panel panel2;
+        private DevExpress.XtraBars.Navigation.NavigationPane navigationPane1;
+        private DevExpress.XtraBars.Navigation.NavigationPage navigationPage1;
+        private DevExpress.XtraBars.Navigation.NavigationPage navigationPage2;
+        private DevExpress.XtraBars.Navigation.NavigationPage navigationPage3;
+        private DevExpress.XtraBars.Navigation.NavigationPage navigationPage4;
+        private DevExpress.XtraBars.Navigation.NavigationPage navigationPage5;
+        private DevExpress.XtraBars.Navigation.NavigationPage navigationPage6;
+        private DevExpress.XtraBars.Navigation.NavigationPage navigationPage7;
+        private DevExpress.XtraBars.Navigation.NavigationPage navigationPage8;
+        private DevExpress.XtraBars.Navigation.NavigationPage navigationPage9;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton5;
+        private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraBars.Navigation.AccordionControl accordionControl1;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
 
     }
 }
