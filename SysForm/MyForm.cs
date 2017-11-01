@@ -13,20 +13,16 @@ namespace SysForm
 {
     public partial class MyForm : Form
     {
-        /// <summary>
-        /// 服务器套接字的字符串形式，从登录窗体得到
+        /// <summary>服务器套接字的字符串形式，从登录窗体得到
         /// </summary>
         private string _svrskt = null;
-        /// <summary>
-        /// 用于接受和发送的网络流，从登录窗体得到
+        /// <summary>用于接受和发送的网络流，从登录窗体得到
         /// </summary>
         private NetworkStream _nws = null;
-        /// <summary>
-        /// 数据缓冲区大小
+        /// <summary>数据缓冲区大小
         /// </summary>
         private int _maxPacket = 2048;//2K的缓冲区
-        /// <summary>
-        /// 用于接受消息的线程
+        /// <summary>用于接受消息的线程
         /// </summary>
         private Thread _receiveThread = null;
 
@@ -296,7 +292,6 @@ namespace SysForm
 
         private DataTable getData()
         {
-
             Random ran = new Random();
             int RandKey = ran.Next(5, 20);
             DataTable dt = new DataTable("testData");
@@ -307,6 +302,16 @@ namespace SysForm
                 dt.Rows.Add((i % 3 == 0), Guid.NewGuid().ToString());
             }
             return dt;
+        }
+
+        private void 标记为已读ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

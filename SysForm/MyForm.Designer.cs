@@ -61,6 +61,9 @@ namespace SysForm
             this.accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.navigationPage2 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.grid1MenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.标记为已读ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -92,6 +95,7 @@ namespace SysForm
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             this.navigationPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            this.grid1MenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             this.navigationPage4.SuspendLayout();
@@ -265,6 +269,7 @@ namespace SysForm
             // 
             // gridControl1
             // 
+            this.gridControl1.ContextMenuStrip = this.grid1MenuStrip;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView2;
@@ -275,6 +280,28 @@ namespace SysForm
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
+            // 
+            // grid1MenuStrip
+            // 
+            this.grid1MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.标记为已读ToolStripMenuItem,
+            this.删除ToolStripMenuItem});
+            this.grid1MenuStrip.Name = "grid1MenuStrip";
+            this.grid1MenuStrip.Size = new System.Drawing.Size(153, 70);
+            // 
+            // 标记为已读ToolStripMenuItem
+            // 
+            this.标记为已读ToolStripMenuItem.Name = "标记为已读ToolStripMenuItem";
+            this.标记为已读ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.标记为已读ToolStripMenuItem.Text = "标记为已读";
+            this.标记为已读ToolStripMenuItem.Click += new System.EventHandler(this.标记为已读ToolStripMenuItem_Click);
+            // 
+            // 删除ToolStripMenuItem
+            // 
+            this.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem";
+            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.删除ToolStripMenuItem.Text = "删除";
+            this.删除ToolStripMenuItem.Click += new System.EventHandler(this.删除ToolStripMenuItem_Click);
             // 
             // gridView2
             // 
@@ -544,6 +571,7 @@ namespace SysForm
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             this.navigationPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            this.grid1MenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             this.navigationPage4.ResumeLayout(false);
@@ -591,6 +619,9 @@ namespace SysForm
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
+        private ContextMenuStrip grid1MenuStrip;
+        private ToolStripMenuItem 标记为已读ToolStripMenuItem;
+        private ToolStripMenuItem 删除ToolStripMenuItem;
 
     }
 }
