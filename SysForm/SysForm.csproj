@@ -92,7 +92,22 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TCPConnection.cs" />
+    <Compile Include="AccordionCtr.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AccordionCtr.Designer.cs">
+      <DependentUpon>AccordionCtr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Win32API.cs" />
+    <EmbeddedResource Include="AccordionCtr.resx">
+      <DependentUpon>AccordionCtr.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.cs</DependentUpon>
     </EmbeddedResource>

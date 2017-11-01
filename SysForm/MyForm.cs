@@ -29,6 +29,7 @@ namespace SysForm
         /// </summary>
         private Thread _receiveThread = null;
 
+        private Label _ParentLabel = null;
         public MyForm()
         {
             InitializeComponent();
@@ -203,19 +204,40 @@ namespace SysForm
             this.navigationPage8.PageVisible = false;
             this.navigationPage9.PageVisible = false;
 
-
             string[] A2 = { "任务属性", "输入数据", "输出数据", "标准规范", "故障案例", "科技文献", "技术文件", "工具模块", "工作笔记" };
-
-            AccordionControlElement acEle2;
+          
             AccordionControlElement acEle1 = accordionControl1.Elements[0];
 
-            foreach (string A2Ele in A2)
+
+            foreach (var i in accordionControl1.Elements)
             {
-                acEle2 = acEle1.Elements.Add();
-                acEle2.Text = A2Ele;
-            }
+                getHeaderLabel(i);
+                foreach (string A2Ele in A2)
+                {
+                    AccordionControlElement ace = new AccordionControlElement();
+                    ace.Text = A2Ele;
+                    i.Elements.Add(ace);
+                }
+            }            
         }
-        
+
+        /// <summary>
+        /// 获取label工厂方法
+        /// </summary>
+        /// <param name="type">标题名称</param>
+        /// <returns></returns>
+        public Label getHeaderLabel(AccordionControlElement ace)
+        {
+            Label label = new Label();
+            label.BackColor = Color.Transparent;
+            label.Text = ace.Text;
+            label.ContextMenuStrip = this.contextMenuStrip1;
+            //必须将label的tag设置为element,右键菜单时通过label获取headerControl就是通过tag
+            label.Tag = ace;
+            ace.HeaderControl = label;
+            ace.Text = "";
+            return label;
+        }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -248,6 +270,27 @@ namespace SysForm
                 this.navigationPage9.PageVisible = !this.navigationPage9.PageVisible;
             }
             
+        }
+
+        private void 接收ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AccordionControlElement ace = this._ParentLabel.Tag as AccordionControlElement;
+            MessageBox.Show(ace.Name);
+        }
+
+        private void 提交ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AccordionControlElement ace = this._ParentLabel.Tag as AccordionControlElement;
+        }
+
+        private void 详细ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AccordionControlElement ace = this._ParentLabel.Tag as AccordionControlElement;
+        }
+
+        private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            _ParentLabel = (sender as ContextMenuStrip).SourceControl as Label;
         }
     }
 }

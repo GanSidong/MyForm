@@ -71,6 +71,11 @@ namespace SysForm
             this.navigationPage7 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.navigationPage8 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.navigationPage9 = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.TSMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navigationPane1)).BeginInit();
@@ -78,6 +83,7 @@ namespace SysForm
             this.navigationPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             this.navigationPage4.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -209,9 +215,11 @@ namespace SysForm
             // 
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.accordionControlElement1});
+            this.accordionControlElement1,
+            this.accordionControlElement2});
             this.accordionControl1.Location = new System.Drawing.Point(0, 0);
             this.accordionControl1.Name = "accordionControl1";
+            this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Auto;
             this.accordionControl1.Size = new System.Drawing.Size(219, 519);
             this.accordionControl1.TabIndex = 0;
             this.accordionControl1.Text = "accordionControl1";
@@ -378,6 +386,42 @@ namespace SysForm
             this.navigationPage9.Properties.ShowExpandButton = DevExpress.Utils.DefaultBoolean.False;
             this.navigationPage9.Size = new System.Drawing.Size(219, 506);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSMenuItem1,
+            this.TSMenuItem2,
+            this.TSMenuItem3});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 70);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            // 
+            // TSMenuItem1
+            // 
+            this.TSMenuItem1.Name = "TSMenuItem1";
+            this.TSMenuItem1.Size = new System.Drawing.Size(100, 22);
+            this.TSMenuItem1.Text = "接收";
+            this.TSMenuItem1.Click += new System.EventHandler(this.接收ToolStripMenuItem_Click);
+            // 
+            // TSMenuItem2
+            // 
+            this.TSMenuItem2.Name = "TSMenuItem2";
+            this.TSMenuItem2.Size = new System.Drawing.Size(100, 22);
+            this.TSMenuItem2.Text = "提交";
+            this.TSMenuItem2.Click += new System.EventHandler(this.提交ToolStripMenuItem_Click);
+            // 
+            // TSMenuItem3
+            // 
+            this.TSMenuItem3.Name = "TSMenuItem3";
+            this.TSMenuItem3.Size = new System.Drawing.Size(100, 22);
+            this.TSMenuItem3.Text = "详细";
+            this.TSMenuItem3.Click += new System.EventHandler(this.详细ToolStripMenuItem_Click);
+            // 
+            // accordionControlElement2
+            // 
+            this.accordionControlElement2.Name = "accordionControlElement2";
+            this.accordionControlElement2.Text = "后续设计任务";
+            // 
             // MyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -397,6 +441,7 @@ namespace SysForm
             this.navigationPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             this.navigationPage4.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -427,6 +472,11 @@ namespace SysForm
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraBars.Navigation.AccordionControl accordionControl1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem TSMenuItem1;
+        private ToolStripMenuItem TSMenuItem2;
+        private ToolStripMenuItem TSMenuItem3;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement2;
 
     }
 }
