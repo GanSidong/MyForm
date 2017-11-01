@@ -64,7 +64,7 @@ namespace SysForm
             this.grid1MenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.标记为已读ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -96,7 +96,7 @@ namespace SysForm
             this.navigationPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             this.grid1MenuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             this.navigationPage4.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -272,14 +272,14 @@ namespace SysForm
             this.gridControl1.ContextMenuStrip = this.grid1MenuStrip;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
-            this.gridControl1.MainView = this.gridView2;
+            this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1});
             this.gridControl1.Size = new System.Drawing.Size(219, 519);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
+            this.gridView1});
             // 
             // grid1MenuStrip
             // 
@@ -287,32 +287,33 @@ namespace SysForm
             this.标记为已读ToolStripMenuItem,
             this.删除ToolStripMenuItem});
             this.grid1MenuStrip.Name = "grid1MenuStrip";
-            this.grid1MenuStrip.Size = new System.Drawing.Size(153, 70);
+            this.grid1MenuStrip.Size = new System.Drawing.Size(137, 48);
             // 
             // 标记为已读ToolStripMenuItem
             // 
             this.标记为已读ToolStripMenuItem.Name = "标记为已读ToolStripMenuItem";
-            this.标记为已读ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.标记为已读ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.标记为已读ToolStripMenuItem.Text = "标记为已读";
             this.标记为已读ToolStripMenuItem.Click += new System.EventHandler(this.标记为已读ToolStripMenuItem_Click);
             // 
             // 删除ToolStripMenuItem
             // 
             this.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem";
-            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.删除ToolStripMenuItem.Text = "删除";
             this.删除ToolStripMenuItem.Click += new System.EventHandler(this.删除ToolStripMenuItem_Click);
             // 
-            // gridView2
+            // gridView1
             // 
-            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn5,
             this.gridColumn6});
-            this.gridView2.GridControl = this.gridControl1;
-            this.gridView2.Name = "gridView2";
-            this.gridView2.OptionsDetail.DetailMode = DevExpress.XtraGrid.Views.Grid.DetailMode.Default;
-            this.gridView2.OptionsView.ShowFooter = true;
-            this.gridView2.OptionsView.ShowGroupPanel = false;
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsDetail.DetailMode = DevExpress.XtraGrid.Views.Grid.DetailMode.Default;
+            this.gridView1.OptionsView.ShowFooter = true;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gridView1_RowCellStyle);
             // 
             // gridColumn5
             // 
@@ -572,7 +573,7 @@ namespace SysForm
             this.navigationPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             this.grid1MenuStrip.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             this.navigationPage4.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
@@ -615,7 +616,7 @@ namespace SysForm
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;

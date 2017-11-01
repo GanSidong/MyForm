@@ -40,7 +40,7 @@ namespace SysForm
             _receiveThread.Start();
         }
 
-        #region 关闭，最小化，最大化按钮事件
+        #region 窗口关闭，最小化，最大化按钮事件
         private void cloBtn_Click(object sender, EventArgs e)
         {
             DialogResult ret;
@@ -141,16 +141,6 @@ namespace SysForm
             }
         }
 
-        /// <summary>
-        /// 提取命令
-        /// </summary>
-        /// <param name="s">要解析的包含命令的byte数组，只提取前两个字节</param>
-        /// <returns>拼接成的命令</returns>
-        private string DecodingBytes(byte[] s)
-        {
-            return string.Concat(s[0].ToString(), s[1].ToString());
-        }
-       
         private void login()
         {
             //向服务器发出连接请求
@@ -236,6 +226,17 @@ namespace SysForm
             return label;
         }
 
+        /// <summary>
+        /// 提取命令
+        /// </summary>
+        /// <param name="s">要解析的包含命令的byte数组，只提取前两个字节</param>
+        /// <returns>拼接成的命令</returns>
+        private string DecodingBytes(byte[] s)
+        {
+            return string.Concat(s[0].ToString(), s[1].ToString());
+        }
+
+        #region 点击事件
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             this.Show();
@@ -269,6 +270,11 @@ namespace SysForm
             
         }
 
+        private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            _ParentLabel = (sender as ContextMenuStrip).SourceControl as Label;
+        }
+
         private void 接收ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AccordionControlElement ace = this._ParentLabel.Tag as AccordionControlElement;
@@ -285,10 +291,16 @@ namespace SysForm
             AccordionControlElement ace = this._ParentLabel.Tag as AccordionControlElement;
         }
 
-        private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        private void 标记为已读ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _ParentLabel = (sender as ContextMenuStrip).SourceControl as Label;
+
         }
+
+        private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
 
         private DataTable getData()
         {
@@ -304,14 +316,13 @@ namespace SysForm
             return dt;
         }
 
-        private void 标记为已读ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
-
-        }
-
-        private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
+            string accountQuantity = gridView1.GetRowCellValue(e.RowHandle, "column0").ToString();
+            if (accountQuantity.ToLower() == "true")
+            {
+                e.Appearance.FontStyleDelta = FontStyle.Bold;
+            }
         }
 
     }
