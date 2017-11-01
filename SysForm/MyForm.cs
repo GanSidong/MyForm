@@ -296,13 +296,16 @@ namespace SysForm
 
         private DataTable getData()
         {
-            DataTable dt = new DataTable("testData");
 
+            Random ran = new Random();
+            int RandKey = ran.Next(5, 20);
+            DataTable dt = new DataTable("testData");
             dt.Columns.Add("column0", typeof(Boolean));
             dt.Columns.Add("column1", typeof(String));
-            
-            dt.Rows.Add(true, DateTime.Now.ToString());
-            dt.Rows.Add(false, Guid.NewGuid().ToString());
+            for (int i = 0; i < RandKey; i++)
+            {
+                dt.Rows.Add((i % 3 == 0), Guid.NewGuid().ToString());
+            }
             return dt;
         }
 
