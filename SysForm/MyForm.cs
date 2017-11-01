@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraBars.Navigation;
 using DevExpress.XtraEditors;
 using System;
+using System.Data;
 using System.Drawing;
 using System.Net;
 using System.Net.Sockets;
@@ -195,7 +196,6 @@ namespace SysForm
             }
         }
 
-
         private void initView()
         {
             this.navigationPage5.PageVisible = false;
@@ -218,7 +218,8 @@ namespace SysForm
                     ace.Text = A2Ele;
                     i.Elements.Add(ace);
                 }
-            }            
+            }
+            this.gridControl1.DataSource = getData();
         }
 
         /// <summary>
@@ -292,5 +293,18 @@ namespace SysForm
         {
             _ParentLabel = (sender as ContextMenuStrip).SourceControl as Label;
         }
+
+        private DataTable getData()
+        {
+            DataTable dt = new DataTable("testData");
+
+            dt.Columns.Add("column0", typeof(Boolean));
+            dt.Columns.Add("column1", typeof(String));
+            
+            dt.Rows.Add(true, DateTime.Now.ToString());
+            dt.Rows.Add(false, Guid.NewGuid().ToString());
+            return dt;
+        }
+
     }
 }

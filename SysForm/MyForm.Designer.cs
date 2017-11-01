@@ -58,7 +58,14 @@ namespace SysForm
             this.navigationPage1 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.navigationPage2 = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.navigationPage3 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.navigationPage4 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
@@ -75,13 +82,18 @@ namespace SysForm
             this.TSMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navigationPane1)).BeginInit();
             this.navigationPane1.SuspendLayout();
             this.navigationPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
+            this.navigationPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             this.navigationPage4.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -234,14 +246,89 @@ namespace SysForm
             this.accordionControlElement1.Name = "accordionControlElement1";
             this.accordionControlElement1.Text = "初步结构设计";
             // 
+            // accordionControlElement2
+            // 
+            this.accordionControlElement2.Name = "accordionControlElement2";
+            this.accordionControlElement2.Text = "后续设计任务";
+            // 
             // navigationPage2
             // 
+            this.navigationPage2.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.navigationPage2.Appearance.Options.UseBackColor = true;
             this.navigationPage2.Caption = "我的消息";
+            this.navigationPage2.Controls.Add(this.gridControl1);
             this.navigationPage2.Image = ((System.Drawing.Image)(resources.GetObject("navigationPage2.Image")));
             this.navigationPage2.Name = "navigationPage2";
             this.navigationPage2.Properties.ShowCollapseButton = DevExpress.Utils.DefaultBoolean.False;
             this.navigationPage2.Properties.ShowExpandButton = DevExpress.Utils.DefaultBoolean.False;
-            this.navigationPage2.Size = new System.Drawing.Size(219, 506);
+            this.navigationPage2.Size = new System.Drawing.Size(219, 519);
+            // 
+            // gridControl1
+            // 
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.Location = new System.Drawing.Point(0, 0);
+            this.gridControl1.MainView = this.gridView2;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemImageComboBox1});
+            this.gridControl1.Size = new System.Drawing.Size(219, 519);
+            this.gridControl1.TabIndex = 1;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView2});
+            // 
+            // gridView2
+            // 
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn5,
+            this.gridColumn6});
+            this.gridView2.GridControl = this.gridControl1;
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsDetail.DetailMode = DevExpress.XtraGrid.Views.Grid.DetailMode.Default;
+            this.gridView2.OptionsView.ShowFooter = true;
+            this.gridView2.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "#";
+            this.gridColumn5.ColumnEdit = this.repositoryItemImageComboBox1;
+            this.gridColumn5.FieldName = "column0";
+            this.gridColumn5.ImageAlignment = System.Drawing.StringAlignment.Center;
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 0;
+            this.gridColumn5.Width = 30;
+            // 
+            // repositoryItemImageComboBox1
+            // 
+            this.repositoryItemImageComboBox1.AutoHeight = false;
+            this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", false, 0),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", true, 1)});
+            this.repositoryItemImageComboBox1.LargeImages = this.imageList1;
+            this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
+            this.repositoryItemImageComboBox1.ReadOnly = true;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "邮件.png");
+            this.imageList1.Images.SetKeyName(1, "read.png");
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "消息主题";
+            this.gridColumn6.FieldName = "column1";
+            this.gridColumn6.ImageAlignment = System.Drawing.StringAlignment.Center;
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.OptionsColumn.AllowEdit = false;
+            this.gridColumn6.OptionsColumn.AllowFocus = false;
+            this.gridColumn6.OptionsColumn.ReadOnly = true;
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 1;
+            this.gridColumn6.Width = 666;
             // 
             // navigationPage3
             // 
@@ -250,7 +337,7 @@ namespace SysForm
             this.navigationPage3.Name = "navigationPage3";
             this.navigationPage3.Properties.ShowCollapseButton = DevExpress.Utils.DefaultBoolean.False;
             this.navigationPage3.Properties.ShowExpandButton = DevExpress.Utils.DefaultBoolean.False;
-            this.navigationPage3.Size = new System.Drawing.Size(219, 506);
+            this.navigationPage3.Size = new System.Drawing.Size(219, 519);
             // 
             // navigationPage4
             // 
@@ -417,10 +504,25 @@ namespace SysForm
             this.TSMenuItem3.Text = "详细";
             this.TSMenuItem3.Click += new System.EventHandler(this.详细ToolStripMenuItem_Click);
             // 
-            // accordionControlElement2
+            // gridColumn3
             // 
-            this.accordionControlElement2.Name = "accordionControlElement2";
-            this.accordionControlElement2.Text = "后续设计任务";
+            this.gridColumn3.Caption = "#";
+            this.gridColumn3.FieldName = "column0";
+            this.gridColumn3.ImageAlignment = System.Drawing.StringAlignment.Center;
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 0;
+            this.gridColumn3.Width = 30;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "消息主题";
+            this.gridColumn4.FieldName = "column1";
+            this.gridColumn4.ImageAlignment = System.Drawing.StringAlignment.Center;
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 1;
+            this.gridColumn4.Width = 666;
             // 
             // MyForm
             // 
@@ -440,6 +542,10 @@ namespace SysForm
             this.navigationPane1.ResumeLayout(false);
             this.navigationPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
+            this.navigationPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             this.navigationPage4.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -477,6 +583,14 @@ namespace SysForm
         private ToolStripMenuItem TSMenuItem2;
         private ToolStripMenuItem TSMenuItem3;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement2;
+        private ImageList imageList1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
 
     }
 }
